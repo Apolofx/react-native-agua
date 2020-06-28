@@ -1,22 +1,48 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { View, KeyboardAvoidingView } from "react-native";
-import Input from "../form-input/index";
+import FormInput from "../form-input/index";
+import {
+  Input,
+  Select,
+  SelectItem,
+  IndexPath,
+  Layout,
+} from "@ui-kitten/components";
 import { styles } from "./styles";
 import { MathContext } from "../../providers/math-context";
 export default function Form() {
-  const functions = useContext(MathContext);
+  const [index, setIndex] = useState(new IndexPath(0));
+  const {
+    setMN,
+    setAB,
+    setCorriente,
+    setTension,
+    AB,
+    MN,
+    corriente,
+    tension,
+  } = useContext(MathContext);
   return (
-    <View style={styles.container}>
+    <Layout style={styles.container}>
       <View style={styles.row}>
-        <Input onChangeText={functions.setAB} placeholder="AB/2"></Input>
-        <Input onChangeText={functions.setMN} placeholder="MN"></Input>
+        <FormInput
+          value={AB}
+          onChangeText={setAB}
+          placeholder="AB/2"
+        ></FormInput>
+        <FormInput value={MN} onChangeText={setMN} placeholder="MN"></FormInput>
       </View>
 
-      <Input
-        onChangeText={functions.setCorriente}
+      <FormInput
+        value={corriente}
+        onChangeText={setCorriente}
         placeholder="Corriente"
-      ></Input>
-      <Input onChangeText={functions.setTension} placeholder="Tension"></Input>
-    </View>
+      ></FormInput>
+      <FormInput
+        value={tension}
+        onChangeText={setTension}
+        placeholder="Tension"
+      ></FormInput>
+    </Layout>
   );
 }

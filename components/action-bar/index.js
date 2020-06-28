@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { View, StyleSheet } from "react-native";
 import { Button, ButtonGroup, Icon } from "@ui-kitten/components";
 import { MathContext } from "../../providers/math-context";
@@ -8,12 +8,15 @@ export default function ActionBar() {
   );
   const Anterior = (props) => <Icon name="arrowhead-left-outline" {...props} />;
   const Calcular = (props) => <Icon name="refresh" {...props} />;
-  const { calcResist, Res, setRes } = useContext(MathContext);
+  const { clearData, calcResist, Res, setRes } = useContext(MathContext);
 
-  const updateRes = async () => {
-    await calcResist();
-    alert(`Resistividad: ${Res}`);
+  const updateRes = () => {
+    calcResist();
+    clearData();
   };
+  useEffect(() => {
+    Res ? alert(Res) : null;
+  }, [Res]);
   return (
     <View style={styles.container}>
       <ButtonGroup appearance="outline" size="giant">
