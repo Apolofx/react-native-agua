@@ -1,18 +1,26 @@
 import React, { useState } from "react";
-import { TextInput, Text, View, KeyboardAvoidingView } from "react-native";
+import { Text, View, KeyboardAvoidingView } from "react-native";
+import { Input } from "@ui-kitten/components";
 import { styles } from "./styles";
 
-export default function Input(props) {
+export default function CustomInput(props) {
   const [value, setValue] = useState("");
+  const updateState = (props, value) => {
+    props.onChangeText(value);
+    setValue(value);
+  };
   return (
     <View style={styles.container}>
       <KeyboardAvoidingView>
-        <TextInput
-          keyboardType="decimal-pad"
+        <Input
+          keyboardType="numeric"
+          size="large"
           placeholder={props.placeholder}
-          onChangeTexts={(value) => setValue(value)}
+          placeholderTextColor="#C7C7CD"
+          onChangeText={(value) => updateState(props, value)}
           value={value}
-        ></TextInput>
+          textStyle={styles.input}
+        ></Input>
       </KeyboardAvoidingView>
     </View>
   );
