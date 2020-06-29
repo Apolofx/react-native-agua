@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "Agua Dulce",
+    "description": "Simple App for calculating soil resistivity measurements",
     "slug": "geoelectrica",
     "version": "1.0.0",
     "orientation": "portrait",

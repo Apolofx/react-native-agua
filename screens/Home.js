@@ -5,7 +5,7 @@ import Form from "../components/form/index";
 import BottomBar from "../components/action-bar/index";
 export default function Home() {
   return (
-    <View>
+    <View style={styles.container}>
       <Form />
       <BottomBar />
     </View>
@@ -13,5 +13,8 @@ export default function Home() {
 }
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    justifyContent: "space-evenly",
+  },
 });

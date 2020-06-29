@@ -20,5 +20,6 @@ export const styles = StyleSheet.create({
   },
   input: {
     fontSize: 30,
+    textAlign: "center",
   },
 });

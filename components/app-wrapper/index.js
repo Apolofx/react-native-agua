@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import {
   Keyboard,
   StyleSheet,
@@ -6,7 +6,7 @@ import {
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
 } from "react-native";
-
+import { Layout } from "@ui-kitten/components";
 export default function AppContainer(props) {
   return (
     <KeyboardAvoidingView
@@ -14,7 +14,9 @@ export default function AppContainer(props) {
       style={props.style}
     >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View>{props.children}</View>
+        <Layout style={props.style} level="3">
+          {props.children}
+        </Layout>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
   );
